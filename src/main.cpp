@@ -349,9 +349,9 @@ int main() {
 
                     case 6: {
                         string filename;
-                        cout << "Masukkan nama file (default: data/output.txt): ";
+                        cout << "Masukkan nama file (default: data/input.txt): ";
                         getline(cin, filename);
-                        if (filename.empty()) filename = "data/output.txt";
+                        if (filename.empty()) filename = "data/input.txt";
                         manager.saveToFile(filename);
                         break;
                     }

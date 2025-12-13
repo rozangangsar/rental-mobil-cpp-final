@@ -269,21 +269,15 @@ void RentalManager::saveToFile(string filename) {
         return;
     }
 
+    int saved = 0;
     for (int i = 0; i < cars.size(); i++) {
-        outputFile << cars[i].getCarID() << "|" << cars[i].getCarModel() << "|"
-                   << cars[i].getCarType() << "|" << cars[i].getDailyRate() << "|"
-                   << (cars[i].getAvailable() ? "1" : "0") << "|"
-                   << cars[i].getCurrentRenter() << endl;
-    }
-
-    outputFile << "\n[PENYEWA]\n";
-    for (int i = 0; i < renters.size(); i++) {
-        outputFile << renters[i].getRenterID() << "|" << renters[i].getRenterName() << "|"
-                   << renters[i].getPhoneNumber() << "|" << renters[i].getAddress() << "|"
-                   << renters[i].getRentalCar() << "|" << renters[i].getRentalDays() << "|"
-                   << renters[i].getTotalCost() << endl;
+        outputFile << cars[i].getCarID() << " "
+                   << cars[i].getCarModel() << " "
+                   << cars[i].getCarType() << " "
+                   << cars[i].getDailyRate() << endl;
+        saved++;
     }
 
     outputFile.close();
-    cout << "Data berhasil disimpan ke " << filename << endl;
+    cout << "Data berhasil disimpan ke " << filename << " (" << saved << " mobil)" << endl;
 }
