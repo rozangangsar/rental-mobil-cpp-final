@@ -10,7 +10,7 @@ void displayLoginScreen() {
     cout << "-========================================-" << endl;
     cout << "\n===    SELAMAT DATANG DI JUST RENT!    ===" << endl;
     cout << "1. Login" << endl;
-    cout << "2. Daftar Akun" << endl;
+    cout << "2. Register" << endl;
     cout << "0. Keluar" << endl;
     cout << "Pilihan Anda: ";
 }
@@ -19,7 +19,7 @@ void displayAdminMenu() {
     cout << "\n-========================================-" << endl;
     cout << "       DASHBOARD ADMIN JUST RENT!         "   << endl;
     cout << "-=========================================-" << endl;
-    cout << "\n=== MENU UTAMA (ADMIN) ===" << endl;
+    cout << "\n=== MENU UTAMA ADMIN ===" << endl;
     cout << "1. Kelola Data Mobil" << endl;
     cout << "2. Kelola Data Penyewa" << endl;
     cout << "3. Transaksi Penyewaan" << endl;
@@ -34,7 +34,7 @@ void displayUserMenu() {
     cout << "\n-========================================-" << endl;
     cout << "     JUST RENT! PILIH MOBIL FAVORITMU!     " << endl;
     cout << "-=========================================-" << endl;
-    cout << "\n=== MENU UTAMA (USER) ===" << endl;
+    cout << "\n=== MENU UTAMA USER ===" << endl;
     cout << "1. Lihat Daftar Mobil Tersedia" << endl;
     cout << "2. Cari Mobil Berdasarkan Tipe" << endl;
     cout << "3. Sewa Mobil" << endl;
@@ -86,6 +86,8 @@ void displayViewMenu() {
 int main() {
     RentalManager manager;
     AuthenticationManager authManager;
+    
+    manager.loadFromFile("data/input.txt");
 
     int mainChoice, carChoice, renterChoice, transChoice, viewChoice, loginChoice;
     string username, password, carID, carModel, carType, renterID, renterName, phone, address, days, rate;
@@ -102,16 +104,16 @@ int main() {
 
         if (loginChoice == 2) {
             cout << "\n=== DAFTAR AKUN USER BARU ===" << endl;
-            cout << "Pilih username: ";
+            cout << "Masukkan username: ";
             getline(cin, username);
-            cout << "Pilih password: ";
+            cout << "Masukkan password: ";
             getline(cin, password);
             authManager.addUser(username, password, USER);
             continue;
         }
 
         if (loginChoice < 1 || loginChoice > 2) {
-            cout << "Pilihan tidak valid!" << endl;
+            cout << "Username/Password tidak valid!" << endl;
             continue;
         }
 
