@@ -392,8 +392,19 @@ int main() {
                     case 3: {
                         // Sewa Mobil
                         cout << "\n--- Sewa Mobil ---" << endl;
-                        cout << "ID Anda sebagai Penyewa: ";
-                        getline(cin, renterID);
+                        renterID = loggedInUser->getUsername();
+                        Renter* renter = manager.findRenter(renterID);
+                        if (renter == NULL) {
+                            cout << "Data penyewa belum ada untuk akun ini. Lengkapi data berikut:" << endl;
+                            cout << "Nama Penyewa: ";
+                            getline(cin, renterName);
+                            cout << "Nomor Telepon: ";
+                            getline(cin, phone);
+                            cout << "Alamat: ";
+                            getline(cin, address);
+                            manager.addRenter(renterID, renterName, phone, address);
+                        }
+
                         cout << "ID Mobil yang ingin disewa: ";
                         getline(cin, carID);
                         cout << "Jumlah Hari: ";
