@@ -9,11 +9,12 @@ AuthenticationManager::AuthenticationManager() {
 
 void AuthenticationManager::initializeDefaultUsers() {
     users.push_back(User("admin", "admin123", ADMIN));
-    users.push_back(User("administrator", "pass123456", ADMIN));
+
 
     users.push_back(User("user", "user123", USER));
     users.push_back(User("rozan", "12345678", USER));
-    users.push_back(User("john", "johndoe", USER));
+    users.push_back(User("amar", "bantul", USER));
+    users.push_back(User("hamam", "sewon", USER));
 }
 
 User* AuthenticationManager::login(string username, string password) {
@@ -21,9 +22,6 @@ User* AuthenticationManager::login(string username, string password) {
         if (users[i].getUsername() == username) {
             if (users[i].verifyPassword(password)) {
                 currentUser = &users[i];
-                cout << "\n=========================" << endl;
-                cout << "     LOGIN BERHASIL!     " << endl;
-                cout << "==========================" << endl;
                 cout << "Selamat datang, " << currentUser->getUsername() << "!" << endl;
                 cout << "Role: " << currentUser->getRoleAsString() << endl;
                 return currentUser;

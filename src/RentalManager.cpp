@@ -2,13 +2,11 @@
 #include <iostream>
 #include <fstream>
 #include <algorithm>
+#include <sstream>
 using namespace std;
 
 RentalManager::RentalManager() {
-    // Constructor
 }
-
-// ===== CAR MANAGEMENT =====
 void RentalManager::addCar(string id, string model, string type, long rate) {
     if (findCar(id) != NULL) {
         cout << "Error: Mobil dengan ID " << id << " sudah ada!" << endl;
@@ -16,7 +14,6 @@ void RentalManager::addCar(string id, string model, string type, long rate) {
     }
     Car newCar(id, model, type, rate);
     cars.push_back(newCar);
-    cout << "Mobil berhasil ditambahkan!" << endl;
 }
 
 void RentalManager::editCar(string carID, string model, string type, long rate) {
@@ -76,8 +73,6 @@ Car* RentalManager::findCar(string carID) {
     }
     return NULL;
 }
-
-// ===== RENTER MANAGEMENT =====
 void RentalManager::addRenter(string id, string name, string phone, string address) {
     if (findRenter(id) != NULL) {
         cout << "Error: Penyewa dengan ID " << id << " sudah ada!" << endl;
@@ -131,8 +126,6 @@ Renter* RentalManager::findRenter(string renterID) {
     }
     return NULL;
 }
-
-// detail pesanan rental
 void RentalManager::rentCar(string renterID, string carID, int days, long dailyRate) {
     Renter* renter = findRenter(renterID);
     Car* car = findCar(carID);
@@ -198,8 +191,6 @@ void RentalManager::viewRentalHistory() {
         cout << "Tidak ada riwayat penyewaan." << endl;
     }
 }
-
-// fitur search dan filter
 void RentalManager::searchCarByType(string type) {
     cout << "\n=== PENCARIAN MOBIL - TIPE: " << type << " ===" << endl;
     int count = 0;
@@ -231,15 +222,44 @@ void RentalManager::loadFromFile(string filename) {
         return;
     }
 
-    string id, model, type, name, phone, address;
-    long rate;
+    string line;
+    int added = 0;
+    while (getline(inputFile, line)) {
+        if (line.empty()) continue;
 
-    while (inputFile >> id >> model >> type >> rate) {
+        istringstream iss(line);
+        vector<string> parts;
+        string token;
+        while (iss >> token) {
+            parts.push_back(token);
+        }
+        if (parts.size() < 4) {
+            cout << "Baris diabaikan (format salah): " << line << endl;
+            continue;
+        }
+
+        string id = parts[0];
+        string type = parts[parts.size() - 2];
+        long rate = 0;
+        try {
+            rate = stol(parts.back());
+        } catch (...) {
+            cout << "Baris diabaikan (tarif tidak valid): " << line << endl;
+            continue;
+        }
+
+        string model;
+        for (size_t i = 1; i < parts.size() - 2; i++) {
+            if (!model.empty()) model += " ";
+            model += parts[i];
+        }
+
         addCar(id, model, type, rate);
+        added++;
     }
 
     inputFile.close();
-    cout << "Data berhasil dimuat dari " << filename << endl;
+    cout << "Data berhasil dimuat dari " << filename <<endl;
 }
 
 void RentalManager::saveToFile(string filename) {
