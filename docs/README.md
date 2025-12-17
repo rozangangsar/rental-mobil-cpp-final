@@ -3,7 +3,7 @@
 - **Anggota 2:** Hammam Priyandono-23/521232/TK/57494
 - **Anggota 3:** Ammar Ali Yasir-23/520644/TK/57406
 
-# Aplikasi Rental Mobil Sederhana
+# Aplikasi Rental Mobil Just Rent!
 
 Aplikasi rental mobil "Just Rent!" berbasis console yang dikembangkan menggunakan C++ dengan pendekatan Object Oriented Programming (OOP).
 
