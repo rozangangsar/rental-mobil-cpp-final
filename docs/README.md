@@ -1,11 +1,7 @@
 ## Anggota Kelompok
-
-**Rozan Gangsar Adibrata**
-- NIM: 23/521626/TK/57547
-**Hammam Priyandono**
-- NIM: 23/521232/TK/57494
-**Ammar Ali Yasir**
-- NIM: 23/520644/TK/57406
+- **Anggota 1:** Rozan Gangsar Adibrata-23/521626/TK/57547
+- **Anggota 2:** Hammam Priyandono-23/521232/TK/57494
+- **Anggota 3:** Ammar Ali Yasir-23/520644/TK/57406
 
 # Aplikasi Rental Mobil Sederhana
 
