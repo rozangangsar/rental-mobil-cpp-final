@@ -49,7 +49,7 @@ Aplikasi ini menyediakan sistem manajemen lengkap untuk bisnis rental mobil deng
 ProgdasUAS/
 - include/   (header files)
 - src/       (implementasi .cpp dan main)
-- data/      (sample/input-output data)
+- data/      (input-output data)
 - docs/      (dokumentasi)
 - bin/       (output executable)
 - Makefile
@@ -88,7 +88,7 @@ rental.exe        # Windows
 
 ## Cara Penggunaan
 
-Aplikasi otomatis memuat data mobil dari `data/input.txt` saat start. Alur singkat:
+Aplikasi otomatis memuat data mobil dari `data/input.txt` saat start. Dengan Alur :
 - Login: pilih 1 untuk login, 2 untuk daftar akun user baru, 0 untuk keluar.
 - Admin: kelola mobil/penyewa, transaksi, info, load/save data mobil.
 - User: lihat/sewa mobil; ID penyewa otomatis = username login (jika belum ada data penyewa, diminta isi nama/telepon/alamat sekali).
@@ -106,7 +106,7 @@ JUST RENT! - APLIKASI RENTAL MOBIL
 **Menambah Mobil:**
 1. Pilih menu 1 (Kelola Data Mobil)
 2. Pilih sub-menu 1 (Tambah Mobil)
-3. Masukkan data sesuai prompt
+3. Masukkan data 
 
 **Sewa Mobil (User):**
 1. Login sebagai user
@@ -116,9 +116,9 @@ JUST RENT! - APLIKASI RENTAL MOBIL
 
 **Simpan Data Mobil:**
 1. Menu admin ? Simpan Data ke File
-2. Masukkan nama file (default: `data/output.txt`)
+2. Masukkan nama file (default: `data/input.txt`)
 3. Data mobil disimpan dalam format `ID Model Tipe Tarif`
-> Catatan: Data penyewa dan riwayat sewa saat ini tidak disimpan ke file; akan hilang saat aplikasi ditutup.
+> Data penyewa dan riwayat sewa tidak disimpan ke file, data akan hilang saat aplikasi ditutup.
 
 
 ## Format File
