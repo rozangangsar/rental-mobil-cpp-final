@@ -131,7 +131,7 @@ MBL003 Daihatsu_Terios SUV 320000
 ...
 ```
 
-## Fitur-Fitur Teknis
+## Fitur Tambahan
 
 - **Vector Container**: Menggunakan `vector<Car>` dan `vector<Renter>` untuk dynamic array
 - **Pointer**: Menggunakan pointer untuk return value pada fungsi pencarian
